@@ -17,8 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fetch stations and populate the list
     async function fetchStations() {
       try {
-        const response = await fetch('https://us-central1-freeradio-cea16.cloudfunctions.net/getStations');
-        stations = await response.json();
+        const response = await fetch('https://de1.api.radio-browser.info/json/stations/bycountry/Israel', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          });
+                  stations = await response.json();
         showTopStations(stations); 
         populateStationMenu(stations);
       } catch (error) {
