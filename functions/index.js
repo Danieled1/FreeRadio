@@ -10,17 +10,15 @@ const functions = require("firebase-functions");
 const axios = require("axios");
 const cors = require("cors")({origin: true});
 
-// Example function to get radio stations
 exports.getStations = functions.https.onRequest((req, res) => {
-  cors(req, res, async () => {
-    console.log("Function getStations called");
+  cors(req, res, async () => { // Use CORS middleware
     try {
-      console.log("Making request to Radio Browser API...");
       const response = await axios.get("https://de1.api.radio-browser.info/json/stations/bycountry/Israel");
-      console.log("API response received:", response.data);
+      res.set("Access-Control-Allow-Origin", "*"); // Allow all origins
+      res.set("Access-Control-Allow-Methods", "GET, POST");
+      res.set("Access-Control-Allow-Headers", "Content-Type");
       res.json(response.data);
     } catch (error) {
-      console.error("Error fetching radio stations:", error);
       res.status(500).send("Error fetching radio stations");
     }
   });
