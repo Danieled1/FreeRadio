@@ -1,136 +1,179 @@
-/* Custom Styles */
-body, html {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-    margin: 0;
-    padding: 0;
-    direction: rtl; /* Enable RTL */
+/* Updated Color Palette */
+:root {
+    --cool-gray: #717599 !important; /* Darker, muted shade */
+    --french-gray: #8d93ab !important; /* Softer tone */
+    --ash-gray: #c6e2df !important; /* Light, calming background */
+    --tea-green: #a2e5a3 !important; /* Softer green for buttons */
+    --light-green: #89d889 !important; /* Harmonious green for accents */
+    --primary-bg: var(--ash-gray) !important;
+    --secondary-bg: #f7f8fa !important; /* Light background for contrast */
+    --button-hover-bg: #72ca74 !important; /* Slightly darker green for hover */
+    --text-color: #4a4a4a !important; /* Darker text color for better contrast */
+  }
+  
+  /* Body & General Styles */
+  body, html {
+    font-family: 'Rubik', sans-serif !important;
+    background-color: var(--primary-bg) !important;
+    color: var(--text-color) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    direction: rtl !important;
   }
   
   /* Header Styles */
   header {
-    background: linear-gradient(135deg, #673ab7, #5e35b1);
+    background: var(--cool-gray) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
   }
   
   header h1 {
-    font-size: 2.5rem;
+    font-size: 2.5rem !important;
+    font-weight: 600 !important; /* Reduced font weight for cleaner look */
+    color: var(--light-green) !important;
   }
   
   header p {
-    font-size: 1.25rem;
+    font-size: 1.1rem !important; /* Slightly smaller size for better balance */
+    font-weight: 300 !important;
+    color: #f7f8fa !important; /* Softer, more visible text */
   }
   
   /* Main Content */
   main {
-    padding: 2rem 0;
+    padding: 2.5rem 0 !important; /* Adjusted padding for better spacing */
   }
   
   .card {
-    border-radius: 12px;
-    border: none;
+    border-radius: 12px !important; /* Smaller radius for modern look */
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important; /* Softer shadow */
+    overflow: hidden !important;
+    background-color: var(--secondary-bg) !important; /* Light background */
   }
   
   .card h2 {
-    margin-bottom: 1rem;
-  }
-  .card-body {
-    padding-bottom: 4rem; /* Increase padding below the content */
-  }
-  #searchInput {
-    height: 3rem;
-    font-size: 1.1rem; /* Slightly increase font size */
-    padding: 0.75rem 1rem; /* Add padding for better spacing */
+    margin-bottom: 1rem !important;
+    font-weight: 500 !important;
+    color: var(--text-color) !important;
   }
   
-  #clearButton {
-    height: 3rem;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-left: 0;
-    padding: 0 1rem; /* Add horizontal padding */
-
+  .card-body {
+    padding: 1.75rem !important; /* Consistent padding for better layout */
+  }
+  
+  .input-group .form-control {
+    border-top-left-radius: 12px !important;
+    border-bottom-left-radius: 12px !important;
+    padding: 0.75rem !important; /* Reduced padding for balance */
+    font-size: 1rem !important;
+    background-color: #eaf2e7 !important; /* Softer input background */
+  }
+  
+  .input-group .btn {
+    border-top-right-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+    padding: 0.75rem 1.5rem !important;
+    background-color: var(--light-green) !important;
+    color: #fff !important;
+    font-size: 1rem !important; /* Consistent font size */
   }
   
   #suggestions {
-    z-index: 1000;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 0 0 4px 4px;
-    max-height: 200px;
-    overflow-y: auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 0.5rem; /* Add more margin between input and suggestions */
-    padding: 0.5rem 0; /* Add padding inside the suggestions box */
+    z-index: 1000 !important;
+    background: white !important;
+    border: 1px solid #ddd !important;
+    border-radius: 0 0 12px 12px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    max-height: 200px !important;
+    overflow-y: auto !important;
+    padding: 0.5rem 0 !important;
   }
   
   #suggestions .list-group-item {
-    cursor: pointer;
-    padding: 15px 20px; /* Increase padding inside each item */
-    font-size: 1.1rem; /* Slightly increase font size */
+    cursor: pointer !important;
+    padding: 12px 18px !important; /* Reduced padding for compact look */
+    font-size: 0.95rem !important; /* Smaller text size */
+    transition: background-color 0.2s ease !important;
   }
   
   #suggestions .list-group-item:hover {
-    background-color: #f0f0f0;
+    background-color: #d4f2d1 !important; /* Softer hover color */
   }
   
   #playButton {
-    height: 3.5rem; /* Increase height */
-    font-size: 1.2rem; /* Increase font size */
-    font-weight: bold;
-    margin-top: 1rem; /* Add space above the button */
-    margin-bottom: 1.5rem; /* Add space below the button */
+    font-size: 1.1rem !important; /* Reduced size for balance */
+    padding: 0.75rem 0 !important;
+    font-weight: 500 !important;
+    border-radius: 12px !important;
+    background-color: var(--light-green) !important;
+    transition: background-color 0.3s ease !important;
   }
-/* Adjust spacing for now playing section */
-#nowPlaying {
-    margin-top: 2rem; /* Add space above the now playing section */
-    margin-bottom: 1.5rem; /* Add space below the now playing section */
-}
-/* Adjust spacing for the station image */
-#stationImage {
-    max-width: 100px; /* Limit image width */
-    margin-bottom: 1rem; /* Add space below the image */
-}
-#stationTags {
-    font-size: 1rem;
-    color: #777;
-    margin-bottom: 1rem; /* Add space below the tags */
+  
+  #playButton:hover {
+    background-color: var(--button-hover-bg) !important;
+  }
+  
+  #nowPlaying {
+    margin-top: 1.5rem !important;
+  }
+  
+  #stationImage {
+    max-width: 100px !important;
+    margin-bottom: 1rem !important;
+    border-radius: 8px !important; /* Reduced radius for better fit */
+  }
+  
+  #stationTags {
+    font-size: 0.95rem !important;
+    color: var(--text-color) !important;
+    margin-bottom: 1rem !important;
   }
   
   #stationHomepage {
-    display: inline-block;
-    margin-top: 1rem;
-    font-size: 1rem;
-    padding: 0.5rem 1.5rem; /* Increase padding */
+    margin-top: 1rem !important;
+    font-size: 0.95rem !important; /* Reduced size for better layout */
+    padding: 0.5rem 1.5rem !important;
+    background-color: var(--light-green) !important;
+    color: #fff !important;
   }
   
-
   audio {
-    border-radius: 8px;
-    outline: none;
-    margin-top: 1rem; /* Add space above the audio player */
+    border-radius: 8px !important;
+    outline: none !important;
+    margin-top: 1rem !important;
+    width: 100% !important;
   }
   
   /* Off-canvas Menu */
   .offcanvas {
-    width: 300px;
+    width: 300px !important;
   }
   
   .offcanvas .offcanvas-header {
-    background-color: #673ab7;
-    color: #fff;
+    background-color: var(--cool-gray) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
   }
   
   .offcanvas .list-group-item {
-    cursor: pointer;
+    cursor: pointer !important;
+    transition: background-color 0.2s ease !important;
   }
   
   .offcanvas .list-group-item:hover {
-    background-color: #e8e8e8;
+    background-color: #e0f6e1 !important; /* Softer hover effect */
   }
   
   /* Footer Styles */
   footer {
-    background: linear-gradient(135deg, #5e35b1, #673ab7);
+    background: var(--cool-gray) !important;
+    color: #fff !important;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  footer p {
+    margin: 0 !important;
+    font-size: 0.9rem !important;
   }
   
