@@ -15,7 +15,7 @@ app.get('/api/stations', async (req, res) => {
     res.status(500).send('Error fetching radio stations');
   }
 });
-
+// test
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
