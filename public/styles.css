@@ -1,0 +1,136 @@
+/* Custom Styles */
+body, html {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    direction: rtl; /* Enable RTL */
+  }
+  
+  /* Header Styles */
+  header {
+    background: linear-gradient(135deg, #673ab7, #5e35b1);
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+  }
+  
+  header p {
+    font-size: 1.25rem;
+  }
+  
+  /* Main Content */
+  main {
+    padding: 2rem 0;
+  }
+  
+  .card {
+    border-radius: 12px;
+    border: none;
+  }
+  
+  .card h2 {
+    margin-bottom: 1rem;
+  }
+  .card-body {
+    padding-bottom: 4rem; /* Increase padding below the content */
+  }
+  #searchInput {
+    height: 3rem;
+    font-size: 1.1rem; /* Slightly increase font size */
+    padding: 0.75rem 1rem; /* Add padding for better spacing */
+  }
+  
+  #clearButton {
+    height: 3rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 0;
+    padding: 0 1rem; /* Add horizontal padding */
+
+  }
+  
+  #suggestions {
+    z-index: 1000;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 0 0 4px 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 0.5rem; /* Add more margin between input and suggestions */
+    padding: 0.5rem 0; /* Add padding inside the suggestions box */
+  }
+  
+  #suggestions .list-group-item {
+    cursor: pointer;
+    padding: 15px 20px; /* Increase padding inside each item */
+    font-size: 1.1rem; /* Slightly increase font size */
+  }
+  
+  #suggestions .list-group-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  #playButton {
+    height: 3.5rem; /* Increase height */
+    font-size: 1.2rem; /* Increase font size */
+    font-weight: bold;
+    margin-top: 1rem; /* Add space above the button */
+    margin-bottom: 1.5rem; /* Add space below the button */
+  }
+/* Adjust spacing for now playing section */
+#nowPlaying {
+    margin-top: 2rem; /* Add space above the now playing section */
+    margin-bottom: 1.5rem; /* Add space below the now playing section */
+}
+/* Adjust spacing for the station image */
+#stationImage {
+    max-width: 100px; /* Limit image width */
+    margin-bottom: 1rem; /* Add space below the image */
+}
+#stationTags {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 1rem; /* Add space below the tags */
+  }
+  
+  #stationHomepage {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem; /* Increase padding */
+  }
+  
+
+  audio {
+    border-radius: 8px;
+    outline: none;
+    margin-top: 1rem; /* Add space above the audio player */
+  }
+  
+  /* Off-canvas Menu */
+  .offcanvas {
+    width: 300px;
+  }
+  
+  .offcanvas .offcanvas-header {
+    background-color: #673ab7;
+    color: #fff;
+  }
+  
+  .offcanvas .list-group-item {
+    cursor: pointer;
+  }
+  
+  .offcanvas .list-group-item:hover {
+    background-color: #e8e8e8;
+  }
+  
+  /* Footer Styles */
+  footer {
+    background: linear-gradient(135deg, #5e35b1, #673ab7);
+  }
+  
