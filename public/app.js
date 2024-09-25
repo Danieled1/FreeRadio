@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fetch stations and populate the list
     async function fetchStations() {
       try {
-        const response = await fetch('/api/stations');
+        const response = await fetch('https://us-central1-freeradio-cea16.cloudfunctions.net/getStations');
         stations = await response.json();
         showTopStations(stations); 
         populateStationMenu(stations);
