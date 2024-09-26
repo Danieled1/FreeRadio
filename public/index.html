@@ -41,6 +41,13 @@
             <div class="card-body">
               <div class="mb-4">
                 <h2 class="h4">חפש או בחר תחנה</h2>
+                <!-- Genre Filter Dropdown -->
+                <div class="mb-3">
+                  <select id="genreSelect" class="form-select">
+                    <option value="">בחר ז'אנר</option>
+                    <!-- Options will be populated dynamically -->
+                  </select>
+                </div>
                 <div class="position-relative mb-3">
                   <div class="input-group">
                     <input
@@ -85,7 +92,7 @@
       </div>
     </main>
 
-    <footer class=" text-white text-center py-3">
+    <footer class="text-white text-center py-3">
       <div class="container">
         <p>&copy; 2024 כל הזכויות שמורות לרדיו דפדפן.</p>
       </div>
@@ -117,6 +124,7 @@
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
-    <script src="app.js" defer></script>
+    <script src="translations.js"></script>
+    <script type="module" src="app.js" defer></script>
   </body>
 </html>

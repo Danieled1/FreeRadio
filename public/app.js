@@ -1,3 +1,5 @@
+import { genreTranslations, stationTranslations } from './translations.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
     const clearButton = document.getElementById('clearButton');
@@ -8,11 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const stationImage = document.getElementById('stationImage');
     const stationTags = document.getElementById('stationTags');
     const stationHomepage = document.getElementById('stationHomepage');
-    const stationListElement = document.getElementById('stationList'); 
+    const stationListElement = document.getElementById('stationList');
     const stationListMenu = new bootstrap.Offcanvas(document.getElementById('stationListMenu'));
+    const genreSelect = document.getElementById('genreSelect');
   
     let stations = [];
     let selectedStation = null;
+    let genres = new Set();
   
     // Fetch stations and populate the list
     async function fetchStations() {
@@ -29,11 +33,34 @@ document.addEventListener('DOMContentLoaded', () => {
         );    
         console.log(stations);
         
+        populateGenres(stations);
         showTopStations(stations); 
         populateStationMenu(stations);
       } catch (error) {
         console.error('Error fetching stations:', error);
       }
+    }
+  
+    // Translate text using provided dictionaries
+    function translateText(text, dictionary) {
+      return dictionary[text] || text;
+    }
+  
+    // Populate genres dropdown based on station data
+    function populateGenres(stationList) {
+      genres.clear();
+      stationList.forEach(station => {
+        if (station.tags) {
+          station.tags.split(',').forEach(tag => genres.add(tag.trim()));
+        }
+      });
+      genreSelect.innerHTML = '<option value="">בחר ז\'אנר</option>';
+      genres.forEach(genre => {
+        const option = document.createElement('option');
+        option.value = genre;
+        option.textContent = translateText(genre, genreTranslations); // Translate genre to Hebrew
+        genreSelect.appendChild(option);
+      });
     }
   
     // Show top 10 most listened stations by default
@@ -54,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const item = document.createElement('a');
           item.href = "#";
           item.classList.add('list-group-item', 'list-group-item-action');
-          item.textContent = `${station.name} (${station.country})`;
+          item.textContent = translateText(station.name, stationTranslations); // Translate station name
           item.onclick = () => {
             selectStation(station);
             stationListMenu.hide(); // Close the off-canvas menu
@@ -93,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stationList.forEach(station => {
           const item = document.createElement('div');
           item.classList.add('list-group-item', 'list-group-item-action');
-          item.textContent = `${station.name} (${station.country})`;
+          item.textContent = translateText(station.name, stationTranslations); // Translate station name
           item.onclick = () => {
             selectStation(station);
             playStation();
@@ -106,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Select a station from suggestions or menu
     function selectStation(station) {
       selectedStation = station;
-      searchInput.value = `${station.name} (${station.country})`; 
+      searchInput.value = `${translateText(station.name, stationTranslations)} (${station.country})`; 
       suggestions.innerHTML = ''; 
     }
   
@@ -115,8 +142,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (selectedStation) {
         audioPlayer.src = selectedStation.url_resolved;
         audioPlayer.play();
-        stationTitle.textContent = selectedStation.name;
-  
+        stationTitle.textContent = translateText(selectedStation.name, stationTranslations); // Translate station name
+        console.log(stationTitle.textContent);
+        
         if (selectedStation.favicon) {
           stationImage.src = selectedStation.favicon;
           stationImage.style.display = 'block';
@@ -125,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
   
         if (selectedStation.tags) {
-          stationTags.textContent = `תגיות: ${selectedStation.tags}`;
+          stationTags.textContent = `תגיות: ${translateText(selectedStation.tags, genreTranslations)}`; // Translate tags
           stationTags.style.display = 'block';
         } else {
           stationTags.style.display = 'none';
@@ -141,6 +169,19 @@ document.addEventListener('DOMContentLoaded', () => {
         alert("אנא בחר תחנה מהרשימה.");
       }
     }
+  
+    // Filter stations by genre
+    genreSelect.addEventListener('change', (e) => {
+      const selectedGenre = e.target.value.toLowerCase();
+      if (selectedGenre) {
+        const filteredStations = stations.filter(station => 
+          station.tags.toLowerCase().includes(selectedGenre)
+        );
+        populateStationList(filteredStations);
+      } else {
+        showTopStations(stations);
+      }
+    });
   
     // Clear search input and reset selected station
     function clearSearch() {
@@ -158,4 +199,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial fetch of stations
     fetchStations();
   });
+  
   
