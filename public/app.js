@@ -23,7 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
               'Content-Type': 'application/json',
             }
           });
-                  stations = await response.json();
+        stations = await response.json();    
+        stations = stations.filter(station => 
+            station.language !== 'arabic' && station.languagecode !== 'ar'
+        );    
+        console.log(stations);
+        
         showTopStations(stations); 
         populateStationMenu(stations);
       } catch (error) {
